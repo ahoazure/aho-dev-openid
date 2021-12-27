@@ -26,7 +26,7 @@ from django_admin_listfilter_dropdown.filters import (
 from import_export.admin import (ImportExportModelAdmin, ExportMixin,
     ImportExportActionModelAdmin,ExportActionModelAdmin,)
 from authentication.models import CustomUser, CustomGroup
-from bootstrap_datepicker_plus import DatePickerInput # Nice date picker 06/03
+# from bootstrap_datepicker_plus import DatePickerInput # Nice date picker 06/03
 from .filters import TranslatedFieldFilter #Danile solution to duplicate filters
 
 from commoninfo.wizard import DataWizardFacilitySerializer
@@ -192,9 +192,9 @@ class FacilityServiceAvailabilityProxyForm(forms.ModelForm):
         model = FacilityServiceAvailability
         fields = ('facility','domain','intervention','service','provided',
         'specialunit','staff','infrastructure','supplies','date_assessed',)
-        widgets = {
-            'date_assessed': DatePickerInput(), # # default date-format %m/%d/%Y will be used
-        }
+        # widgets = {
+        #     'date_assessed': DatePickerInput(), # # default date-format %m/%d/%Y will be used
+        # }
 
 
 class FacilityServiceAvailabilityInline(admin.TabularInline):
