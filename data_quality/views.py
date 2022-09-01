@@ -10,9 +10,6 @@ from functools import reduce
 
 import json
 
-from sqlalchemy import create_engine #helper for saving dataframes to db
-import MySQLdb # drivers for accessing the database through sqlalchemy
-
 from .models import (Facts_DataFrame,CategoryOptions_Validator,MeasureTypes_Validator,
     DataSource_Validator,Mutiple_MeasureTypes,DqaInvalidDatasourceRemarks,
     DqaInvalidCategoryoptionRemarks,DqaInvalidMeasuretypeRemarks,Similarity_Index,
