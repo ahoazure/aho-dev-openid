@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'facilities',
     'health_workforce',
     'health_services',
+    'data_quality', # for data quality validations
     'data_wizard',
     'rest_framework', # register Django REST framework
     'rest_framework_swagger',
@@ -204,6 +205,7 @@ else:
     STATIC_LOCATION='static' #This works well as the static location
     STATICFILES_STORAGE  = 'aho_datacapturetool.azurestorage.AzureStaticStorage'
     STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{AZURE_CONTAINER}/{STATIC_LOCATION}/'
+    
     # Configurations for serving and uploading files into Azure Blob storage
     DEFAULT_FILE_STORAGE = 'aho_datacapturetool.azurestorage.AzureMediaStorage'
     AZURE_BLOB_MAX_MEMORY_SIZE = os.environ['BLOB_MAX_MEMORY_SIZE']
