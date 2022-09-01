@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'rest_framework', # register Django REST framework
     'rest_framework_swagger',
     'django_admin_listfilter_dropdown',
+    'crispy_forms',
+    
 ]
 
 SESSION_COOKIE_SECURE = True

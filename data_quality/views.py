@@ -53,64 +53,72 @@ def check_data_quality(request):
 
 
         # -----------------------------------Start Save Data Validation DataFrames---------------------------------------------------------
-        # Create data source dataframe and save it into the database into measure types model 
-        MesureTypeValid = pd.read_csv('Datasets/Mesuretype.csv', encoding='iso-8859-1')
-        
-        MesureTypeValid.rename({'IndicatorId':'afrocode','Indicator Name':'indicator_name', 
-                'measurementmethod':'measure_type','measuremethod_id':'measuremethod_id'},
-                axis=1, inplace=True)    
-        measuretypes = json.loads(MesureTypeValid.to_json(
-            orient='records', index=True))  # converts json to dict
-        # Use try..except block to loop through and save measure objects into the database
-        try:
-            for record in measuretypes:    
-                measuretype = MeasureTypes_Validator.objects.update_or_create(
-                    afrocode=record['afrocode'],
-                    indicator_name=record['indicator_name'],
-                    measure_type=record['measure_type'],
-                    measuremethod_id=record['measuremethod_id'],
-                )
+        # Create data source dataframe and save it into the database into measure types model
+        try: 
+            MesureTypeValid = pd.read_csv('Datasets/Mesuretype.csv', encoding='iso-8859-1')
+            
+            MesureTypeValid.rename({'IndicatorId':'afrocode','Indicator Name':'indicator_name', 
+                    'measurementmethod':'measure_type','measuremethod_id':'measuremethod_id'},
+                    axis=1, inplace=True)    
+            measuretypes = json.loads(MesureTypeValid.to_json(
+                orient='records', index=True))  # converts json to dict
+            # Use try..except block to loop through and save measure objects into the database
+            try:
+                for record in measuretypes:    
+                    measuretype = MeasureTypes_Validator.objects.update_or_create(
+                        afrocode=record['afrocode'],
+                        indicator_name=record['indicator_name'],
+                        measure_type=record['measure_type'],
+                        measuremethod_id=record['measuremethod_id'],
+                    )
+            except:
+                pass
         except:
             pass
 
-
         # Create data source dataframe and save it into the database into the datasource model
-        DataSourceValid = pd.read_csv('Datasets/Datasource.csv', encoding='iso-8859-1')  
-        DataSourceValid.rename(
-            {'IndicatorId':'afrocode','Indicator Name':'indicator_name', 
-                'DataSource':'datasource','DatasourceId':'datasource_id'},
-                axis=1, inplace=True)   
-        datasources = json.loads(DataSourceValid.to_json(
-            orient='records', index=True))  # converts json to dict
-
-        # Use try..except block to loop through and save measure objects into the database
         try:
-            for record in datasources:
-                datasource = DataSource_Validator.objects.update_or_create(
-                    afrocode=record['afrocode'],
-                    indicator_name=record['indicator_name'],
-                    datasource=record['datasource'],
-                    datasource_id=record['datasource_id'],
-                )
+            DataSourceValid = pd.read_csv('Datasets/Datasource.csv', encoding='iso-8859-1')  
+            DataSourceValid.rename(
+                {'IndicatorId':'afrocode','Indicator Name':'indicator_name', 
+                    'DataSource':'datasource','DatasourceId':'datasource_id'},
+                    axis=1, inplace=True)   
+            datasources = json.loads(DataSourceValid.to_json(
+                orient='records', index=True))  # converts json to dict
+
+            # Use try..except block to loop through and save measure objects into the database
+            try:
+                for record in datasources:
+                    datasource = DataSource_Validator.objects.update_or_create(
+                        afrocode=record['afrocode'],
+                        indicator_name=record['indicator_name'],
+                        datasource=record['datasource'],
+                        datasource_id=record['datasource_id'],
+                    )
+            except:
+                pass
         except:
             pass
         
         # Create data source dataframe and save it into the database into the datasource model
-        CategoryOptionValid = pd.read_csv('Datasets/Categoryoption.csv', encoding='iso-8859-1')
-        CategoryOptionValid.rename({'IndicatorId':'afrocode','Indicator Name':'indicator_name', 
-                'DataSource':'datasource','DatasourceId':'datasource_id','Category':'categoryoption',
-                'CategoryId':'categoryoption_id'},axis=1, inplace=True)   
+        try:
+            CategoryOptionValid = pd.read_csv('Datasets/Categoryoption.csv', encoding='iso-8859-1')
+            CategoryOptionValid.rename({'IndicatorId':'afrocode','Indicator Name':'indicator_name', 
+                    'DataSource':'datasource','DatasourceId':'datasource_id','Category':'categoryoption',
+                    'CategoryId':'categoryoption_id'},axis=1, inplace=True)   
 
-        categoryoptions = json.loads(CategoryOptionValid.to_json(
-            orient='records', index=True))  # convert to records
-        try:    
-            for record in categoryoptions:
-                categoryoption = CategoryOptions_Validator.objects.update_or_create(
-                    afrocode=record['afrocode'],
-                    indicator_name=record['indicator_name'],
-                    categoryoption=record['categoryoption'],
-                    categoryoption_id=record['categoryoption_id'],
-                )
+            categoryoptions = json.loads(CategoryOptionValid.to_json(
+                orient='records', index=True))  # convert to records
+            try:    
+                for record in categoryoptions:
+                    categoryoption = CategoryOptions_Validator.objects.update_or_create(
+                        afrocode=record['afrocode'],
+                        indicator_name=record['indicator_name'],
+                        categoryoption=record['categoryoption'],
+                        categoryoption_id=record['categoryoption_id'],
+                    )
+            except:
+                pass
         except:
             pass
         # ----------------------------------End Data Validation DataFrames---------------------------------------------------------

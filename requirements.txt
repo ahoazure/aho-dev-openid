@@ -9,11 +9,13 @@ django-parler
 django-parler-rest
 django-modeladmin-reorder
 django-bootstrap-datepicker-plus==3.0.5
-django-smart-selects<=1.5.9
 django-storages[azure]
 django-admin-menu<=1.5
+django-crispy-forms==1.14.0
+django-smart-selects<=1.5.9
 data-wizard<=1.3.0 #checkout latest data wizard
 fuzzywuzzy<=0.18.0
+python-Levenshtein # helper lib for fuzzywuz
 matplotlib==3.5.3
 msal<=1.9.0 #library needed for OIDC
 numpy<=1.23.2
@@ -22,5 +24,6 @@ pandas<=1.4.3
 Pillow>=6.0.0
 python-dotenv<=0.17.1
 pytz<=2018.5
+seaborn==0.11.2
 tablib[all]
 whitenoise
