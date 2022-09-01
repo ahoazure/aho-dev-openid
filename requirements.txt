@@ -19,7 +19,7 @@ msal<=1.9.0 #library needed for OIDC
 numpy<=1.23.2
 mysqlclient<=2.0.1
 pandas<=1.4.3
-Pillow<=6.0.0
+Pillow>=6.0.0
 python-dotenv<=0.17.1
 pytz<=2018.5
 tablib[all]
